@@ -1,0 +1,14 @@
+#Detect the beep alert from a Snuza Hero SE 2
+#Based on a spectrum analysis I did on a recording of the beep sound
+#Notably there is a fairly narrow frequency + DB spike in the 2300-3250 Hz range; the range could probably be narrowed a bit but this works for me.
+#I specified a duration of 2 seconds to reduce false positives
+#And based on the baby sound sensor from Home Assistant: https://www.home-assistant.io/blog/2017/02/03/babyphone/
+binary_sensor:
+  - platform: ffmpeg_noise
+    name: ffmpeg_noise_snuza
+    input: rtsp://{REDACTED -- get a stream from your IP camera}
+    extra_arguments: -filter:a highpass=f=2300,lowpass=f=3250,volume=volume=2 -codec:a libmp3lame -ar 16000
+    #initial_state: false
+    duration: 2
+    reset: 60
+    peak: -32
