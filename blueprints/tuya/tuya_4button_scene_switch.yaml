@@ -1,4 +1,5 @@
 #mirrored from here; edited to include Tuya / Loratap https://github.com/AramidX/ha-blueprint/tree/main/blueprints/tuya
+#manufacturer edited to _TZ3000_ee8nrt2l
 
 blueprint:
   name: ZHA - Tuya / Loratap 4-Button Scene Switch
@@ -11,7 +12,7 @@ blueprint:
       selector:
         device:
           integration: zha
-          manufacturer: _TZ3000_vp6clf9d
+          manufacturer: _TZ3000_ee8nrt2l
           model: TS0044
     button_one_short_press:
       name: Single Press
